@@ -13,7 +13,7 @@ You will need to:
 
 4. Clone the reveal.js repository
    ```sh
-   $ git clone https://github.com/hakimel/reveal.js.git
+   $ git clone https://github.com/MJCallahanPage/MongoDB.git
    ```
 
 5. Navigate to the reveal.js folder
