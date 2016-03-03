@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>reveal.js - Slide Transitions</title>
+
+    <link rel="stylesheet" href="../../css/reveal.css">
+    <link rel="stylesheet" href="../../css/theme/sky.css" id="theme">
+    <link rel="stylesheet" href="../../lib/css/zenburn.css">
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+
+
+
+        <!--
+            Title Page
+            ==========
+        -->
+        <section data-transition="convex-in convex-out">
+
+            <h2>MongoDB - Session 1</h2>
+
+            <div style="width:500px; margin:auto; text-align:center; vertical-align:middle">
+
+
+                <a href="mailto:matthew.page@digital.hmrc.gov.uk"> Matt Page</span>
+                <img style="border:none; vertical-align:middle" src="assets/matt-page.png" width="75px"></a>
+
+            </div>
+
+        </section>
+
+
+
+        <!--
+            Introduction and Agenda
+            =======================
+        -->
+        <section data-transition="convex-in convex-out">
+
+            <h2><b>Introduction</b></h2>
+
+            <div class="left">
+                <h3>Agenda <small>~40 mins</small></h3>
+
+                <ul>
+                    <li>Introduction <small>(~5 mins)</small></li>
+                    <li>What is MongoDB <small>(~15 mins)</small></li>
+                    <ul class="small">
+                        <li>How does it represent and store data?</li>
+                        <li>How does it differ to RDBMS (Oracle, SQL Server)?</li>
+                        <li>Advantages and Disadvantages</li>
+                    </ul>
+                    <li>Basic CRUD Operations <small>(~15 mins)</small></li>
+                    <ul class="small">
+                        <li>Create</li>
+                        <li>Read</li>
+                        <li>Update</li>
+                        <li>Delete</li>
+                    </ul>
+                    <li>Close <small>(~5 mins)</small></li>
+                </ul>
+            </div>
+
+        </section>
+
+
+        <!--
+            Brief History
+            ================
+        -->
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>A brief history</b></h3>
+
+            <div class="left">
+
+                <ul>
+                    <li class="fragment">A company called 10gen started developing MongoDB in 2007</li><br>
+                    <li class="fragment">Its initial release was 2009</li><br>
+                    <li class="fragment">10gen became MongoDB Inc. in 2013</li><br>
+                    <div class="fragment">
+                        <li>As of July 2015:</li>
+                        <ul>
+                            <li>MongoDB is the fourth most popular DMS</li>
+                            <li>It is the most popular for document stores</li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+
+        </section>
+
+
+
+        <!--
+            What is MongoDB?
+            ================
+        -->
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>What is MongoDB?</b></h3>
+
+            <div class="left">
+
+                <ul>
+                    <li class="fragment"><b class="highlight"><u>Non</u>-Relational</b> Data Store for
+                        <a href="http://www.json.org/">JSON</a> <b class="highlight">Documents</b> <small>(records)</small></li><br>
+                    <li class="fragment">Documents are held within <b class="highlight">Collections</b> <small>(tables)</small></li><br>
+                    <li class="fragment">Collections are held within <b class="highlight">Databases</b> <small>(schemas)</small></li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section data-transition="convex-in convex-out">
+
+            <img style="border:none;background:#fff;margin:auto;padding:10px" src="assets/DB-Comparison.png">
+
+        </section>
+
+
+        <!--
+            Documents
+            =========
+        -->
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>Documents</b></h3>
+
+            <div class="left">
+
+                <ul>
+                    <div class="fragment">
+                        <li>Documents are represented using Key-Value pairs in JSON</li>
+                        <pre style="background-color:#fff;">{<span style="color: #007700">&quot;age&quot;</span>:<span style="color: #0000DD; font-weight: bold">25</span>}
+</pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>The documents can contain hierarchy, something which is not easily achieved in a RDBMS</li>
+
+                    <!-- HTML generated using hilite.me -->
+                        <pre style="background-color:#fff;">{
+  <span style="color: #007700">&quot;age&quot;</span>:<span style="color: #0000DD; font-weight: bold">25</span>,
+  <span style="color: #007700">&quot;address&quot;</span>: {
+    <span style="color: #007700">&quot;addLine1&quot;</span>:<span style="background-color: #fff0f0">&quot;33 High Street&quot;</span>,
+    <span style="color: #007700">&quot;addLine2&quot;</span>:<span style="background-color: #fff0f0">&quot;Telford&quot;</span>,
+    <span style="color: #FF0000; background-color: #FFAAAA">...</span>
+  }
+}
+</pre>
+                    </div>
+                    <li class="fragment">
+                        The documents are physically stored in Binary JSON <a href="http://bsonspec.org/">BSON</a> format.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!--
+            Schema-less
+            ==========
+        -->
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>MongoDB is Schema-less</b></h3>
+
+            <ul>
+                <li class="fragment">
+                    Enables <b class="highlight">flexible</b> data models
+                </li>
+                <li class="fragment">
+                    This is great for <b class="highlight">iterative</b> development
+                </li>
+                <div class="fragment">
+                <li>Document A can exist in Collection X with the following attribute:</li>
+                <pre style="background-color:#fff;">{<span style="color: #007700">&quot;age&quot;</span>:<span style="color: #0000DD; font-weight: bold">25</span>}
+</pre></div>
+                <div class="fragment">
+                <li>Document B can also exist in Collection X with the following additional attribute:</li>
+                <pre style="background-color:#fff;">{<span style="color: #007700">&quot;age&quot;</span>:<span style="color: #0000DD; font-weight: bold">25</span>,<span style="color: #007700">&quot;favouriteColour&quot;</span>:<span style="background-color: #fff0f0">&quot;red&quot;</span>}
+</pre></div>
+
+            </ul>
+
+        </section>
+
+
+
+
+        <!--
+            Schemaless and RDBMS
+            ====================
+        -->
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>How is this different in a RDBMS?</b></h3>
+
+            <ul>
+                <li class="fragment">
+                    RDBMS have a Schema Definition which defines the entities and their attributes
+                </li><br>
+                <li class="fragment">
+                    In a RDBMS it's <b><u>not</u></b> possible to have records with different attributes within the same entity
+                </li><br>
+                <li class="fragment">
+                    If an enhancement was required to add a new attribute then the entity would need to be re-modelled/engineered
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+
+        <!--
+            Amending RDBMS Data Model compred to MongoDB
+            ============================================
+        -->
+        <section data-transition="fade-in">
+
+            <img src="assets/RDBMS_Remodel_1.png">
+
+        </section>
+        <section data-transition="fade-in">
+
+            <img src="assets/RDBMS_Remodel_2.png">
+
+        </section>
+
+
+        <!--
+            How it comapres against other DB's
+            ==================================
+        -->
+        <section data-transition="fade-in">
+            <h4><b>How it compares against other DB's</b></h4>
+            <img src="assets/PvF_1.png">
+        </section>
+
+        <section data-transition="fade-in">
+            <h4><b>How it compares against other DB's</b></h4>
+            <img src="assets/PvF_2.png">
+        </section>
+
+        <section data-transition="fade-in">
+            <h4><b>How it compares against other DB's</b></h4>
+            <img src="assets/PvF_3.png">
+        </section>
+
+        <section data-transition="fade-in">
+            <h4><b>How it compares against other DB's</b></h4>
+            <img src="assets/PvF_4.png">
+        </section>
+
+        <section data-transition="fade-in">
+            <h4><b>How it compares against other DB's</b></h4>
+            <img src="assets/PvF_5.png">
+        </section>
+
+
+
+        <!--
+            Advantages and Disadvantages
+            ============================
+        -->
+        <section data-transition="convex-in convex-out">
+            <h3><b>Advantages and Disadvantages</b></h3>
+
+            <table width="100%">
+
+                <tbody class="small">
+
+                    <tr style="border-bottom:1px #000 solid;">
+                        <td></td>
+                        <th>
+                            <span style="color:#F76311;">RDBMS</span>
+                        </th>
+                        <th>
+                            <span style="color:#2F93F7">MongoDB</span>
+                        </th>
+                    </tr>
+                    <tr style="border-bottom:1px #000 solid;">
+                        <th style="vertical-align:middle;">
+                            <span style="color:#339100;">Advantages</span>
+                        </th>
+                        <td style="vertical-align:middle;">
+                            <!-- RDBMS Advantages -->
+                            <ul class="fragment">
+                                <li>
+                                    Greater feature set
+                                </li>
+                                <li>
+                                    History of success
+                                </li>
+                                <li>
+                                    Access to support
+                                </li>
+                                <li>
+                                    Data Integrity
+                                </li>
+                                <li>
+                                    Supports Transactions
+                                </li>
+                                <li>
+                                    <b>Data Centric</b>
+                                </li>
+                            </ul>
+                        </td>
+                        <td style="vertical-align:middle;">
+                            <!-- MongoDB Advantages -->
+                            <ul class="fragment">
+                                <li>
+                                    Horizontal Scalability
+                                </li>
+                                <li>
+                                    Flexible Data-Model <small>(Schema-less)</small>
+                                </li>
+                                <li>
+                                    Supports Iterative Development
+                                </li>
+                                <li>
+                                    Easy Migration
+                                </li>
+                                <li>
+                                    <b>Application Centric</b>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom:1px #000 solid;">
+                        <th style="vertical-align:middle;">
+                            <span style="color:#912214;">Disadvantages</span>
+                        </th>
+                        <td style="vertical-align:middle;">
+                            <!-- RDBMS Disadvantages -->
+                            <ul class="fragment">
+                                <li>
+                                    Horizontal Scalability
+                                </li>
+                                <li>
+                                    Rigid Data-Model <small>(Schema)</small>
+                                </li>
+                                <li>
+                                    Difficult Migration
+                                </li>
+                                <li>
+                                    Cost
+                                </li>
+                                <li>
+                                    <b>Data Centric</b>
+                                </li>
+                            </ul>
+                        </td>
+                        <td style="vertical-align:middle;">
+                            <!-- MongoDB Disadvantages -->
+                            <ul class="fragment">
+                                <li>
+                                    Reduced feature set
+                                </li>
+                                <li>
+                                    Infancy
+                                </li>
+                                <li>
+                                    Data Integrity
+                                </li>
+                                <li>
+                                    No Transaction Support
+                                </li>
+                                <li>
+                                    <b>Application Centric</b>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+
+
+        <!--
+            Basic CRUD Operations
+            =====================
+        -->
+        <section data-transition="fade-in">
+            <h3><b>Basic CRUD Operations</b></h3>
+
+            <table  class="small">
+                <tr>
+                    <th>Operation</th>
+                    <th><span style="color:#2F93F7">MongoDB Method</span></th>
+                    <th><span style="color:#F76311;">SQL Command</span></th>
+                </tr>
+                <tr class="fragment">
+                    <td><b>C</b>reate</td>
+                    <td><b class="highlight">insert()</b></td>
+                    <td>INSERT</td>
+                </tr>
+                <tr class="fragment">
+                    <td><b>R</b>ead</td>
+                    <td><b class="highlight">find()</b></td>
+                    <td>SELECT</td>
+                </tr>
+                <tr class="fragment">
+                    <td><b>U</b>pdate</td>
+                    <td><b class="highlight">update()</b></td>
+                    <td>UPDATE</td>
+                </tr>
+                <tr class="fragment">
+                    <td><b>D</b>elete</td>
+                    <td><b class="highlight">remove()</b></td>
+                    <td>DELETE</td>
+                </tr>
+            </table>
+            <br>
+            <div class="left small">
+                <ul>
+                    <li class="fragment">
+                        Important thing to note is that operations exist as methods in programming language APIs. Not as a separate query language.
+                    </li><br>
+                    <li class="fragment">
+                        Think manipulating an object where the object is a collection.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!--
+            Create (Insert)
+            ===============
+        -->
+        <section data-transition="fade-in">
+            <h3><b>insert(</b><i>document</i><b>)</b></h3>
+            <div class="left small">
+                <ul>
+                    <div class="fragment">
+                        <li>Using the mongo shell. Switch to the "blog" database:</li>
+                        <pre style="background:#fff;width:800px;"><code>> use blog
+    switched to db blog</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Insert a entry to the post collection:</li>
+                        <pre style="background:#fff;width:800px;"><code>> db.post.insert({
+        <span style="color: #007700">&quot;title&quot;</span>:<span style="background-color: #fff0f0">&quot;Our First Post&quot;</span>,
+        <span style="color: #007700">&quot;content&quot;</span>:<span style="background-color: #fff0f0">&quot;This is our first post&quot;</span>
+    });</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Result indicates 1 document inserted:</li>
+                        <pre style="background:#fff;width:800px;"><code>WriteResult({ "nInserted" : 1 })</code></pre>
+                    </div>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!--
+            Read (Find)
+            ===========
+        -->
+        <section data-transition="fade-in">
+            <h3><b>find(</b><i>query</i>, <i>projection</i><b>)</b></h3>
+            <div class="left small">
+                <ul>
+                    <div class="fragment">
+                        <li>Using the mongo shell. Switch to the "blog" database:</li>
+                        <pre style="background:#fff;width:800px;"><code>> use blog
+switched to db blog</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Find entries in the post collection:</li>
+                        <pre style="background:#fff;width:800px;"><code>> db.post.find();</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Results:</li>
+                        <pre style="background:#fff;width:800px;"><code>{ "_id" : ObjectId("56d7015f26876405553d6e10"), "title" : "Our First Post", "content" : "This is our first post" }</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>You chain the <span class="highlight"><b>.pretty()</b></span> method to output more friendly JSON:</li>
+                        <pre style="background:#fff;width:800px;"><code>> db.post.find()<b>.pretty()</b>;
+{
+   <span style="color: #007700">&quot;_id&quot;</span> : ObjectId(<span style="background-color: #fff0f0">&quot;56d7015f26876405553d6e10&quot;</span>),
+   <span style="color: #007700">&quot;title&quot;</span> : <span style="background-color: #fff0f0">&quot;Our First Post&quot;</span>,
+   <span style="color: #007700">&quot;content&quot;</span> : <span style="background-color: #fff0f0">&quot;This is our first post&quot;</span>
+}</code></pre>
+                    </div>
+                </ul>
+            </div>
+        </section>
+
+
+        <!--
+            Update
+            ======
+        -->
+        <section data-transition="fade-in">
+            <h3><b>update(</b><i>query</i>, <i>update</i>, <i>options</i><b>)</b></h3>
+            <div class="left small">
+                <ul>
+                    <div class="fragment">
+                        <li>Using the mongo shell. Switch to the "blog" database:</li>
+                        <pre style="background:#fff;width:800px;"><code>> use blog
+switched to db blog</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Update the first post title to be Hello World:</li>
+                        <pre style="background:#fff;width:800px;"><code>> db.post.update(
+    {"title":"Our First Post"},<span style="color:#1B912E;">       // query document parameter </span>
+    {
+        $set: {                     <span style="color:#1B912E;">  // </span>
+            "title":"Hello World"   <span style="color:#1B912E;">  // update document parameter </span>
+        }                           <span style="color:#1B912E;">  // </span>
+    }
+);</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Results:</li>
+                        <pre style="background:#fff;width:800px;"><code>WriteResult({ <b>"nMatched" : 1</b>, "nUpserted" : 0, <b>"nModified" : 1</b> })</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Confirm Results:</li>
+                        <pre style="background:#fff;width:800px;"><code>> db.post.find()
+{ "_id" : ObjectId("56d7015f26876405553d6e10"), <b>"title" : "Hello World"</b>, "content" : "This is our first post" }</code></pre>
+                    </div>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!--
+            Delete (remove)
+            ===============
+        -->
+        <section data-transition="fade-in">
+            <h3><b>remove(</b><i>query</i>, <i>options</i><b>)</b></h3>
+            <div class="left small">
+                <ul>
+                    <div class="fragment">
+                        <li>Using the mongo shell. Switch to the "blog" database:</li>
+                        <pre style="background:#fff;width:800px;"><code>> use blog
+switched to db blog</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Delete the Hello World post:</li>
+                        <pre style="background:#fff;width:800px;"><code>> db.post.remove(
+    {"title":"Hello World"}<span style="color:#1B912E;">       // query document parameter </span>
+);</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Results:</li>
+                        <pre style="background:#fff;width:800px;"><code>WriteResult({ <b>"nRemoved" : 1</b> })</code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <li>Confirm removal:</li>
+                        <pre style="background:#fff;width:800px;"><code>> db.post.find()
+></code></pre>
+                    </div>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!--
+            Q&A
+            ===
+        -->
+        <section data-transition="fade-in">
+            <h2>Q&A</h2>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="../../lib/js/head.min.js"></script>
+<script src="../../js/reveal.js"></script>
+
+<script>
+
+			Reveal.initialize({
+				center: true,
+				history: true,
+
+				// transition: 'slide',
+				 transitionSpeed: 'slow',
+				// backgroundTransition: 'slide'
+			});
+
+		</script>
+
+</body>
+</html>

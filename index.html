@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>reveal.js - Slide Transitions</title>
+
+    <link rel="stylesheet" href="../../css/reveal.css">
+    <link rel="stylesheet" href="../../css/theme/sky.css" id="theme">
+    <link rel="stylesheet" href="../../lib/css/zenburn.css">
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+
+
+
+        <!--
+            Title Page
+            ==========
+        -->
+        <section data-transition="convex-in convex-out">
+
+            <h2>MongoDB Brown Bags</h2>
+
+            <div class="left">
+
+                <ul>
+                    <li><a href="mongo_slides/session-1.html">Session 1</a></li>
+                    <ul>
+                        <li>History, About, Comparison and Basic CRUD</li>
+                    </ul>
+                </ul>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+<script src="../../lib/js/head.min.js"></script>
+<script src="../../js/reveal.js"></script>
+
+<script>
+
+			Reveal.initialize({
+				center: true,
+				history: true,
+
+				// transition: 'slide',
+				 transitionSpeed: 'slow',
+				// backgroundTransition: 'slide'
+			});
+
+		</script>
+
+</body>
+</html>
