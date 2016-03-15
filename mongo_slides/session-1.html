@@ -25,13 +25,11 @@
         -->
         <section data-transition="convex-in convex-out">
 
-            <h2>MongoDB - Session 1</h2>
+            <h2>MongoDB - Introduction</h2>
 
             <div style="width:500px; margin:auto; text-align:center; vertical-align:middle">
 
-
-                <a href="mailto:matthew.page@digital.hmrc.gov.uk"> Matt Page</span>
-                <img style="border:none; vertical-align:middle" src="assets/matt-page.png" width="75px"></a>
+                <a href="mailto:matthew.page@digital.hmrc.gov.uk"> Matt Page</span></a>
 
             </div>
 
@@ -85,14 +83,15 @@
                 <ul>
                     <li class="fragment">A company called 10gen started developing MongoDB in 2007</li><br>
                     <li class="fragment">Its initial release was 2009</li><br>
-                    <li class="fragment">10gen became MongoDB Inc. in 2013</li><br>
                     <div class="fragment">
-                        <li>As of July 2015:</li>
-                        <ul>
-                            <li>MongoDB is the fourth most popular DMS</li>
-                            <li>It is the most popular for document stores</li>
-                        </ul>
+                        <li>MongoDB is the fourth most popular DMS</li><br>
+                        <ol>
+                          <li>Oracle (Oracle - 1980)</li>
+                          <li>MySQL (Oracle - 1995)</li>
+                          <li>SQL Server (Microsoft - 1989)</li><br>
+                        </ol>
                     </div>
+                    <li class="fragment">It is the most popular for document stores</li>
                 </ul>
             </div>
 
@@ -111,10 +110,13 @@
             <div class="left">
 
                 <ul>
-                    <li class="fragment"><b class="highlight"><u>Non</u>-Relational</b> Data Store for
-                        <a href="http://www.json.org/">JSON</a> <b class="highlight">Documents</b> <small>(records)</small></li><br>
-                    <li class="fragment">Documents are held within <b class="highlight">Collections</b> <small>(tables)</small></li><br>
-                    <li class="fragment">Collections are held within <b class="highlight">Databases</b> <small>(schemas)</small></li>
+                    <li class="fragment"><b class="highlight"><u>Non</u>-Relational</b> database for
+                        <a href="http://www.json.org/">JSON</a> <b class="highlight">Documents</b> <small>(paper)</small>
+                    </li>
+
+                    <br>
+                    <li class="fragment">Documents are held within <b class="highlight">Collections</b> <small>(drawer)</small></li><br>
+                    <li class="fragment">Collections are held within <b class="highlight">Databases</b> <small>(cabinet)</small></li>
                 </ul>
             </div>
 
@@ -139,7 +141,7 @@
 
                 <ul>
                     <div class="fragment">
-                        <li>Documents are represented using Key-Value pairs in JSON</li>
+                        <li>Documents are represented using Key-Value pairs in <b>J</b>ava<b>S</b>cript <b>O</b>bject <b>N</b>otation <a href="http://www.json.org/">JSON</a></li>
                         <pre style="background-color:#fff;">{<span style="color: #007700">&quot;age&quot;</span>:<span style="color: #0000DD; font-weight: bold">25</span>}
 </pre>
                     </div>
@@ -204,11 +206,11 @@
         -->
         <section data-transition="convex-in convex-out">
 
-            <h3><b>How is this different in a RDBMS?</b></h3>
+            <h3><b>How is this different to a RDBMS?</b></h3>
 
             <ul>
                 <li class="fragment">
-                    RDBMS have a Schema Definition which defines the entities and their attributes
+                    RDBMS have a Schema Definition that defines entities and their attributes
                 </li><br>
                 <li class="fragment">
                     In a RDBMS it's <b><u>not</u></b> possible to have records with different attributes within the same entity
@@ -245,27 +247,27 @@
             ==================================
         -->
         <section data-transition="fade-in">
-            <h4><b>How it compares against other DB's</b></h4>
+            <h4><b>How MongoDB compares to other DMS</b></h4>
             <img src="assets/PvF_1.png">
         </section>
 
         <section data-transition="fade-in">
-            <h4><b>How it compares against other DB's</b></h4>
+            <h4><b>How MongoDB compares to other DMS</b></h4>
             <img src="assets/PvF_2.png">
         </section>
 
         <section data-transition="fade-in">
-            <h4><b>How it compares against other DB's</b></h4>
+            <h4><b>How MongoDB compares to other DMS</b></h4>
             <img src="assets/PvF_3.png">
         </section>
 
         <section data-transition="fade-in">
-            <h4><b>How it compares against other DB's</b></h4>
+            <h4><b>How MongoDB compares to other DMS</b></h4>
             <img src="assets/PvF_4.png">
         </section>
 
         <section data-transition="fade-in">
-            <h4><b>How it compares against other DB's</b></h4>
+            <h4><b>How MongoDB compares to other DMS</b></h4>
             <img src="assets/PvF_5.png">
         </section>
 
@@ -305,16 +307,16 @@
                                     History of success
                                 </li>
                                 <li>
-                                    Access to support
+                                    Data Integrity
                                 </li>
                                 <li>
-                                    Data Integrity
+                                    Data Redundancy
                                 </li>
                                 <li>
                                     Supports Transactions
                                 </li>
                                 <li>
-                                    <b>Data Centric</b>
+                                    <b>Data Driven</b>
                                 </li>
                             </ul>
                         </td>
@@ -334,7 +336,7 @@
                                     Easy Migration
                                 </li>
                                 <li>
-                                    <b>Application Centric</b>
+                                    <b>Application Driven</b>
                                 </li>
                             </ul>
                         </td>
@@ -359,7 +361,7 @@
                                     Cost
                                 </li>
                                 <li>
-                                    <b>Data Centric</b>
+                                    <b>Data Driven</b>
                                 </li>
                             </ul>
                         </td>
@@ -376,10 +378,13 @@
                                     Data Integrity
                                 </li>
                                 <li>
+                                    Data Redundancy
+                                </li>
+                                <li>
                                     No Transaction Support
                                 </li>
                                 <li>
-                                    <b>Application Centric</b>
+                                    <b>Application Driven</b>
                                 </li>
                             </ul>
                         </td>
@@ -429,13 +434,10 @@
                 </tr>
             </table>
             <br>
-            <div class="left small">
+            <div class="left">
                 <ul>
                     <li class="fragment">
                         Important thing to note is that operations exist as methods in programming language APIs. Not as a separate query language.
-                    </li><br>
-                    <li class="fragment">
-                        Think manipulating an object where the object is a collection.
                     </li>
                 </ul>
             </div>
@@ -597,7 +599,7 @@ switched to db blog</code></pre>
             ===
         -->
         <section data-transition="fade-in">
-            <h2>Q&A</h2>
+            <h2>Close</h2>
         </section>
 
     </div>
