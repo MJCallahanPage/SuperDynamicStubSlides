@@ -1,7 +1,4 @@
-# MongoDB Brown Bags
-
-Series of reveal.js slides to introduce MongoDB.
-
+# Super Dynamic Stub Presentation
 
 #### Running the Presentation
 
@@ -13,7 +10,7 @@ You will need to:
 
 4. Clone the reveal.js repository
    ```sh
-   $ git clone https://github.com/MJCallahanPage/MongoDB.git
+   $ git clone https://github.com/MJCallahanPage/SuperDynamicStubSlides.git
    ```
 
 5. Navigate to the reveal.js folder
