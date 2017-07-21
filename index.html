@@ -23,20 +23,220 @@
             Title Page
             ==========
         -->
+        <section>
+          <section>
+
+            <h2>Dynamic Stub</h2>
+
+            <div style="width:500px; margin:auto; text-align:center; vertical-align:middle">
+
+                <a href="https://github.com/orgs/hmrc/teams/itvc/repositories"> Team ITVC</span></a>
+
+            </div>
+          </section>
+          <section>
+
+              <h2><b>Dynamic</b> Dynamic Stub?</h2>
+
+              <div style="width:500px; margin:auto; text-align:center; vertical-align:middle">
+
+                  <a href="https://github.com/orgs/hmrc/teams/itvc/repositories"> Team ITVC</span></a>
+
+              </div>
+
+            </section>
+
+            <section>
+
+                <h2>Dynamic<span style="font-size:100px;"><b>&sup2;</b></span> Stub?</h2>
+
+                <div style="width:500px; margin:auto; text-align:center; vertical-align:middle">
+
+                    <a href="https://github.com/orgs/hmrc/teams/itvc/repositories"> Team ITVC</span></a>
+
+                </div>
+
+              </section>
+
+            <section>
+
+                <h2><b>Super</b> Dynamic Stub?</h2>
+
+                <div style="width:500px; margin:auto; text-align:center; vertical-align:middle">
+
+                    <a href="https://github.com/orgs/hmrc/teams/itvc/repositories"> Team ITVC</span></a>
+
+                </div>
+
+              </section>
+        </section>
+
+
+        <!--
+            Brief History
+            ================
+        -->
         <section data-transition="convex-in convex-out">
 
-            <h2>MongoDB Brown Bags</h2>
+            <h3><b>Why?</b></h3>
 
             <div class="left">
 
-                <ul>
-                    <li><a href="mongo_slides/session-1.html">Introduction</a></li>
-                    <ul>
-                        <li>History, About, Comparison and Basic CRUD</li>
-                    </ul>
-                </ul>
+              <ul style="font-size:30px;">
+                <li class="fragment">
+                  We make numerous downstream calls to DES APIs that have varied responses. And other services in general that we may wish to stub out.
+                </li><br>
+                <li class="fragment">
+                  Our frontend handles these responses differently and so we have a number of test scenarios we want to prove.
+                </li><br>
+                <li class="fragment">
+                  We wanted to be able to add new test scenarios (test data) quickly and efficiently; without needing to change any code.
+                  <br><b class="fragment highlight">dynamic stub</b>
+                </li><br>
+                <li class="fragment">
+                  <b>We wanted to be able to add entirely new endpoints to the dynamic stub quickly and efficiently; without needing to change any code.</b>
+                  <br><b class="fragment" style="color:#2F93F7">super dynamic stub</b>
+                </li><br>
+              </ul>
 
+        </section>
+
+
+        <!--
+            What and How
+            ============
+        -->
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>How?</b></h3>
+
+            <div class="left">
+
+                <ul style="font-size:30px;">
+                    <li class="fragment">Team came together to whiteboard ideas/design</li><br>
+                    <li class="fragment">Decided to keep our scope small (only supports GET requests atm)</li><br>
+                    <li class="fragment">Agreed the structure of the MongoDB repositories we would need
+                      <ul  style="font-size:25px;">
+                        <br>
+                        <li><b><span class="highlight">Schema Repository</span></b> (to tell the service what endpoints are available to stub)</li>
+                        <li><b><span class="highlight">Data Repository</span></b> (to store the <b>request</b> to match and the <b>response</b> to give)</li>
+                      </ul>
+                    </li>
+                </ul>
             </div>
+
+        </section>
+
+
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>MongoDB Document Structure</b></h3>
+              <h4><span class="highlight">Schema Repository</span></h4>
+
+            <div class="left">
+
+                <ul style="font-size:25px;">
+                  <br>
+                  <li><b>Endpoint Name</b>: <i>Uniquely identify the endpoint. We've been using the DES API name.</i></li>
+                  <br>
+                  <li><b>Url Regex</b>: <i>Regex definition of the URL to match against when adding responses to the stub for this endpoint.</i></li>
+                  <br>
+                  <li><b>Http Method</b>: <i>Http Method of the stubbed endpoint. (at the moment, only supports GET).</i></li>
+                  <br>
+                  <li><b>Response Schema</b>: <i>Json Schema Definition for the expected response format for the endpoint.</i></li>
+                </ul>
+            </div>
+
+
+        </section>
+
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>MongoDB Document Structure<br><b><span class="highlight">Data Repository</b></span></b></h3>
+
+            <div class="left">
+                <ul  style="font-size:25px;">
+                  <br>
+                  <li><b>Endpoint Name</b>: <i>Uniquely identify the endpoint. Must match an endpoint that has been stubbed.</i></li>
+                  <br>
+                  <li><b>Url Regex</b>: <i>URL to stub. Must match the URL regex for the endpoint.</i></li>
+                  <br>
+                  <li><b>Http Method</b>: <i>Http Method of the stubbed endpoint. (at the moment, only supports GET).</i></li>
+                  <br>
+                  <li><b>Response Status</b>: <i>Response Status to be returned when called.</i></li>
+                  <br>
+                  <li><b>Response Body</b>: <i>Json Response Body to be returned when called. Can be empty.</i></li>
+                </ul>
+            </div>
+
+        </section>
+
+
+        <section data-transition="convex-in">
+
+            <h4><b>High Level Design</b></h4>
+
+            <img style="border:none;background:#fff;margin:auto;padding:10px" src="assets/1_Super_Dynamic_Stub.png">
+
+        </section>
+
+        <section data-transition="fade-in">
+
+            <h4><b>High Level Design</b></h4>
+
+            <img style="border:none;background:#fff;margin:auto;padding:10px" src="assets/2_Super_Dynamic_Stub.png">
+
+        </section>
+
+        <section data-transition="fade-in">
+
+            <h4><b>High Level Design</b></h4>
+
+            <img style="border:none;background:#fff;margin:auto;padding:10px" src="assets/3_Super_Dynamic_Stub.png">
+
+        </section>
+
+        <section data-transition="fade-in">
+
+            <h3><b><a href="http://localhost:9081/test-only/itvc/stub-schema">DEMO</a></b></h3>
+
+        </section>
+
+
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>What's Next?</b></h3>
+
+            <div class="left">
+                <ul  style="font-size:25px;">
+                  <br>
+                  <li class="fragment">Automatically Retrieve <b><span class="highlight">Active</span></b> endpoints that can be stubbed.</li>
+                  <br>
+                  <li class="fragment">Add support for additional Http Methods
+                    (e.g. <b><span class="highlight">POST</span></b>, <b><span class="highlight">PUT</span></b> et al.) and understand what that
+                    means for design of the:
+                    <ul>
+                      <li>Schema Repository</li>
+                      <li>Data Repository</li>
+                    </ul>
+                  </li>
+                  <br>
+                  <li class="fragment">Explore whether we can make this a Generic stub for any team to use (without a need for theirown stub microservice)</li>
+                  <br>
+                  <li class="fragment">Unit and Component Tests. Originally started as a PoC. Highr quality code base</li>
+                  <br>
+                  <li class="fragment">Improved Error Handling</li>
+                  <br>
+                  <li class="fragment">Promote contribution from the communities</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section data-transition="convex-in convex-out">
+
+            <h3><b>Fin</b></h3>
+            <p>Any Questions?</p>
 
         </section>
 
